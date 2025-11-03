@@ -12,11 +12,10 @@ export default function AddUser() {
   });
 
   // ✅ Load users from localStorage when component mounts
- useEffect(() => {
-  const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
-  setUsers(storedUsers);
-}, []);
-
+  useEffect(() => {
+    const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+    setUsers(storedUsers);
+  }, []);
 
   // ✅ Handle input changes
   const handleChange = (e) => {
