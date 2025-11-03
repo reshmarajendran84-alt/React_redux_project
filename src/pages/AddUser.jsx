@@ -15,7 +15,7 @@ export default function AddUser() {
     e.preventDefault();
     const newUser = { name, subject, job, gender };
     dispatch(addUser(newUser)); // ✅ Add to Redux store
-    navigate("/userlist"); // ✅ Redirect
+    navigate("/users"); // ✅ Redirect
   };
 
   return (

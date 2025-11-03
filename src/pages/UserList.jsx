@@ -5,8 +5,11 @@ import { FixedSizeList as List } from "react-window";
 import { Link } from "react-router-dom";
 
 export default function UserList() {
-  const users = useSelector((state) => state.users.list);
+  const users = useSelector((state) => state.user.list); // ✅ Must match store key
+
   const dispatch = useDispatch();
+
+  if (!users) return <p>No users found</p>; // Prevents runtime crash
 
   // Each row in the virtualized list
   const Row = ({ index, style }) => {

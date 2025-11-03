@@ -12,24 +12,18 @@ const initialState = {
 
 
 const userSlice = createSlice({
-  name: "users",
-  initialState,
+  name: "user",
+  initialState: {
+    list: [], // ✅ must be an array, not undefined
+  },
   reducers: {
-    loadUsers: (state, action) => {
-      state.list = action.payload;
-    },
     addUser: (state, action) => {
-      state.list.push(action.payload);
-    },
-    editUser: (state, action) => {
-      const { index, updatedUser } = action.payload;
-      state.list[index] = updatedUser;
+      state.list.push(action.payload); // ✅ add new user
     },
     deleteUser: (state, action) => {
       state.list.splice(action.payload, 1);
     },
   },
 });
-
-export const { loadUsers, addUser, editUser, deleteUser } = userSlice.actions;
+export const { addUser, deleteUser } = userSlice.actions;
 export default userSlice.reducer;
