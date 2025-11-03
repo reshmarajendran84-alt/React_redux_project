@@ -39,6 +39,7 @@ export default function AddUser() {
     <div style={{ padding: "1rem" }}>
       <h2>➕ Add User</h2>
       <form onSubmit={handleSubmit}>
+        <label>Name </label>
         <input
           type="text"
           name="name"
@@ -48,7 +49,8 @@ export default function AddUser() {
           required
         />
         <br />
-
+        <br/>
+<label>Subject </label>
         <input
           type="text"
           name="subject"
@@ -58,7 +60,9 @@ export default function AddUser() {
           required
         />
         <br />
+                <br/>
 
+<label>Job </label>
         <input
           type="text"
           name="job"
@@ -68,7 +72,8 @@ export default function AddUser() {
           required
         />
         <br />
-
+        <br/>
+<label>Gender </label>
         <select
           name="gender"
           value={newUser.gender}
@@ -79,6 +84,8 @@ export default function AddUser() {
           <option value="Female">Female</option>
           <option value="Male">Male</option>
         </select>
+                <br/>
+
         <br />
 
         <button type="submit">Add User</button>
