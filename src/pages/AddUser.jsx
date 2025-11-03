@@ -14,43 +14,20 @@ export default function AddUser() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const newUser = { name, subject, job, gender };
-    dispatch(addUser(newUser)); // ✅ Add to Redux store
-    navigate("/users"); // ✅ Redirect
+    dispatch(addUser(newUser));
+    navigate("/users");
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Enter name"
-        required
-      />
-      <input
-        type="text"
-        value={subject}
-        onChange={(e) => setSubject(e.target.value)}
-        placeholder="Enter subject"
-        required
-      />
-      <input
-        type="text"
-        value={job}
-        onChange={(e) => setJob(e.target.value)}
-        placeholder="Enter job"
-        required
-      />
-      <select
-        value={gender}
-        onChange={(e) => setGender(e.target.value)}
-        required
-      >
+      <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" required />
+      <input value={subject} onChange={(e) => setSubject(e.target.value)} placeholder="Subject" required />
+      <input value={job} onChange={(e) => setJob(e.target.value)} placeholder="Job" required />
+      <select value={gender} onChange={(e) => setGender(e.target.value)} required>
         <option value="">Select Gender</option>
         <option value="Female">Female</option>
         <option value="Male">Male</option>
       </select>
-
       <button type="submit">Add User</button>
     </form>
   );

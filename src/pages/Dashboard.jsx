@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function AddUser() {
-  const navigate = useNavigate(); // ✅ For navigation
+  const navigate = useNavigate();
   const [users, setUsers] = useState([]);
   const [newUser, setNewUser] = useState({
     name: "",
@@ -11,11 +11,12 @@ export default function AddUser() {
     gender: "",
   });
 
-  // ✅ Load existing users from localStorage
-  useEffect(() => {
-    const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
-    setUsers(storedUsers);
-  }, []);
+  // ✅ Load users from localStorage when component mounts
+ useEffect(() => {
+  const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+  setUsers(storedUsers);
+}, []);
+
 
   // ✅ Handle input changes
   const handleChange = (e) => {
@@ -27,21 +28,17 @@ export default function AddUser() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Add new user
     const updatedUsers = [...users, newUser];
     setUsers(updatedUsers);
-
-    // Save to localStorage
     localStorage.setItem("users", JSON.stringify(updatedUsers));
 
-    // ✅ Navigate to UserList page
-    navigate("/"); // Assuming "/" is your UserList/Dashboard route
-    navigate("/users")
+    // ✅ Redirect to UserList page after saving
+    navigate("/users");
   };
 
   return (
     <div style={{ padding: "1rem" }}>
-      <h2>{/* If you want dynamic title */}➕ Add User</h2>
+      <h2>➕ Add User</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
